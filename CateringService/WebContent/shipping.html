@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Lilly's Catering Service | Shipping</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen">
+<script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="js/cufon-yui.js" type="text/javascript"></script>
+<script src="js/cufon-replace.js" type="text/javascript"></script>
+<script src="js/Dynalight_400.font.js" type="text/javascript"></script>
+<script src="js/FF-cash.js" type="text/javascript"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
+</head>
+<body id="page4">
+<!-- <script
+src="http://maps.googleapis.com/maps/api/js">
+</script> -->
+<script>
+/* function initialize() {
+	var latlng = new google.maps.LatLng(13.060251099999999,77.53250709999999);
+	 var rendererOptions = { draggable: true };
+	  directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions); 
+	  var mapProp = {
+	    center:latlng,
+	    zoom:14,
+	    mapTypeId:google.maps.MapTypeId.ROADMAP
+	  };
+	  var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+
+	function getLocation() {
+	    if (navigator.geolocation) {
+	        navigator.geolocation.watchPosition(showPosition);
+	    } else { 
+	        x.innerHTML = "Geolocation is not supported by this browser.";}
+	    }
+	    
+	function showPosition(position) {
+	    x.innerHTML="Latitude: " + position.coords.latitude + 
+	    "<br>Longitude: " + position.coords.longitude;	
+	} */
+</script>
+<script src="http://www.google.com/jsapi?key=ABQIAAAAlJFc1lrstqhgTl3ZYo38bBQcfCcww1WgMTxEFsdaTsnOXOVOUhTplLhHcmgnaY0u87hQyd-n-kiOqQ"></script>
+<script>
+
+function distance(lat1, long1, lat, long, unit) {
+	debugger;
+	var radlat1 = Math.PI * lat1/180
+	var radlat2 = Math.PI * lat/180
+	var radlon1 = Math.PI * long1/180
+	var radlon2 = Math.PI * long/180
+	var theta = long1-long
+	var radtheta = Math.PI * theta/180
+    dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+	dist = Math.acos(dist)
+	dist = dist * 180/Math.PI
+	dist = dist * 60 * 1.1515
+	if (unit=="K") { dist = dist * 1.609344 }
+	//if (unit=="N") { dist = dist * 0.8684 }
+	return dist
+	
+}
+	(function () {
+		google.load("maps", "2");
+		google.setOnLoadCallback(function () {
+			var map = new google.maps.Map2(document.getElementById("googleMap")),
+				markerText = "<h4><i>Lilly's Catering Service</i></h4><p>Lineesh Bhavan<br>5th Cross,KG Halli,JalahalliWest<br>Ph:08023451177</p>",
+				markOutLocation = function (lat1, long1) {
+					var latLong = new google.maps.LatLng(lat1, long1),
+						marker = new google.maps.Marker(latLong);
+					map.setCenter(latLong, 12);
+					map.addOverlay(marker);
+					marker.openInfoWindow(markerText);
+					google.maps.Event.addListener(marker, "click", function () {
+						marker.openInfoWindow(markerText);
+					});
+				};
+				map.setUIToDefault();
+				
+//----------------------------------------------------------------------------------
+      lat1=13.060251099999999;
+	  long1=77.53250709999999;
+	  unit="K";
+	  dist="";
+            markOutLocation1 = function (lat, long) {
+			distance(lat1, long1, lat, long, unit);
+			markerText1 = "<h4>You Are Here</h4><p>Km:"+dist+"</p>";
+					var latLong = new google.maps.LatLng(lat,long),
+						marker = new google.maps.Marker(latLong);
+					map.setCenter(latLong, 12);
+					map.addOverlay(marker);
+					marker.openInfoWindow(markerText1);
+					google.maps.Event.addListener(marker, "click", function () {
+						marker.openInfoWindow(markerText1);
+					});
+				};
+				map.setUIToDefault();
+
+				
+				
+				
+			// Check for geolocation support	
+			if (navigator.geolocation) {
+				// Get current position
+				navigator.geolocation.getCurrentPosition(function (position) {
+						// Success!
+						markOutLocation(13.060251099999999,77.53250709999999);
+						markOutLocation1(position.coords.latitude, position.coords.longitude);
+						//markOutLocation1(13.0077745,77.7337628);
+					}, 
+					function () {
+						// Gelocation fallback: Defaults to Stockholm, Sweden
+						markerText = "<p>Please accept geolocation for me to be able to find you. <br>I've put you in Stockholm for now.</p>";
+						markOutLocation1(lat, long);
+					}
+				);
+			}
+			
+		});	
+	})(
+			
+			
+	
+	);
+</script>
+<!--==============================header=================================-->
+<header>
+  <div class="row-top">
+    <div class="main">
+      <div class="wrapper">
+        <h1><a href="index.html">Lilly's Catering Service</a></h1>
+        <nav>
+          <ul class="menu">
+            <li><a href="index.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="catalogue.html">Catalogue </a></li>
+            <li><a class="active" href="shipping.html">Shipping</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="row-bot">
+    <div class="row-bot-bg">
+      <div class="main">
+        <h2>Impressive Selection <span>for any Occasion</span></h2>
+      </div>
+    </div>
+  </div>
+</header>
+<!--==============================content================================-->
+<section id="content">
+  <div class="main">
+    <div class="wrapper">
+      <article class="col-1">
+        <div class="indent-left">
+          <div class="p2">
+            <h3 class="p1">Standard Shipping Rates</h3>
+            <dl class="list-2">
+              <dt><em>Order</em><span>Rate</span></dt>
+              <dd><em>Duis autem vel eum iriure dolor</em><span>$12.95</span></dd>
+              <dd><em>Hendrerit in vulputate velit</em><span>$15.50</span></dd>
+              <dd><em>Esse molestie consequatvel</em><span>$9.95</span></dd>
+              <dd><em>Illum dolore eu feugiat</em><span>$19.25</span></dd>
+              <dd><em>Nulla facilisis at vero eros et </em><span>$12.95</span></dd>
+              <dd><em>Accumsan et iusto odio dignissim</em><span>$15.50</span></dd>
+              <dd><em>Qui blandit praesent luptatum</em><span>$9.95</span></dd>
+            </dl>
+          </div>
+          <h3 class="p1">Standard Delivery Schedule</h3>
+          <dl class="list-2">
+            <dt><em>Order placed</em><span>Order received</span></dt>
+            <dd><em>Monday</em><span>Thursday</span></dd>
+            <dd><em>Tuesday</em><span>Friday</span></dd>
+            <dd><em>Wednesday</em><span>Saturday</span></dd>
+            <dd><em>Thursday</em><span>Sunday</span></dd>
+            <dd><em>Friday</em><span>Monday</span></dd>
+            <dd><em>Saturday</em><span>Tuesday</span></dd>
+            <dd><em>Sunday</em><span>Wednesday</span></dd>
+          </dl>
+        </div>
+      </article>
+      <article class="col-2">
+        <h3 class="p1">Shipping In</h3>
+        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
+        <figure class="img-indent-bot">
+          <!-- <iframe width="610" height="310" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Brooklyn,+New+York,+NY,+United+States&amp;aq=0&amp;sll=37.0625,-95.677068&amp;sspn=61.282355,146.513672&amp;ie=UTF8&amp;hq=&amp;hnear=Brooklyn,+Kings,+New+York&amp;ll=40.649974,-73.950005&amp;spn=0.01628,0.025663&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe> -->
+        <div id="googleMap" style="width:600px;height:380px;"></div>
+        </figure>
+        <h3>Last Minute Gift Ideas</h3>
+        <h6 class="p2">Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt magna aliquyam eratsed diam voluptua vero eos et accusam et justo duo dolores et ea rebum. </h6>
+        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est. </article>
+    </div>
+  </div>
+</section>
+<!--==============================footer=================================-->
+<footer>
+  <div class="main">
+    <div class="aligncenter"> <span>All Rights Reserved Copyright &copy; <a href="index.html">Lilly's Catering</a></span> Design by <a target="#" href="#">Teenu Varghese</a> </div>
+  </div>
+</footer>
+<script type="text/javascript">Cufon.now();</script>
+</body>
+</html>
